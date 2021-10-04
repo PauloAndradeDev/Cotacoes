@@ -1,0 +1,2 @@
+from cotacoes_moedas.acessando_cotacoes import formatar_saida
+
