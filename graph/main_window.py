@@ -1,6 +1,9 @@
 from tkinter import (
     Tk,
-    Label
+    Label,
+    Button,
+    PhotoImage,
+    LEFT
 )
 from tkinter.ttk import Separator
 
@@ -10,6 +13,7 @@ class MainWindow:
         """Construtor da classe MainWindow."""
         self.__lista_cotacoes: list = list([dolar, euro, bitcoin])
         self.__main_window: Tk = Tk()
+        self.__main_window.iconbitmap("images/money01.ico")
         self.__main_window.title("Cotações")
         self.__main_window.configure(background="#FFFFFF")
         self.__main_window.resizable(0, 0)
@@ -21,9 +25,13 @@ class MainWindow:
                 self.__main_window.winfo_screenheight() / 2 - 200 - 2
             )
         )
+        # Images:
+        self.__exit = PhotoImage(file="images/exit_01.png")
+
         # Make Widgets:
         self.__make_labels(self.__lista_cotacoes[0], self.__lista_cotacoes[1], self.__lista_cotacoes[2])
         self.__make_separators()
+        self.__make_buttons()
 
     def __make_labels(self, dolar: str, euro: str, bitcoin: str) -> None:
         """Método responsável por criar todas as labels da janela principal."""
@@ -57,7 +65,16 @@ class MainWindow:
               ).place(x=260, y=85)
 
     def __make_buttons(self):
-        pass
+        Button(
+            master=self.__main_window,
+            text="Sair",
+            font=("Calibri Bold", 15),
+            foreground="#FF0000",
+            background="#ffffff",
+            width=100,
+            command=lambda: exit(0),
+            image=self.__exit,
+            compound=LEFT).place(x=140, y=150)
 
     def __make_separators(self) -> None:
         """Método responsável por criar todos os separadores da janela principal."""
