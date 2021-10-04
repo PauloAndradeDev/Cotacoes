@@ -74,6 +74,7 @@ class MainWindow:
             width=100,
             command=lambda: exit(0),
             image=self.__exit,
+            cursor = "hand2",
             compound=LEFT).place(x=140, y=150)
 
     def __make_separators(self) -> None:
